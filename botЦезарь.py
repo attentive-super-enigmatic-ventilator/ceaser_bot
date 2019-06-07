@@ -16,7 +16,7 @@ def decryption(text,key):
     return new_text
 print(encryption('вова',1))
 from vk_api.longpoll import VkLongPoll, VkEventType 
-vk_session = vk_api.VkApi(token='ffee8fff00f944d706dd455eeb8eedf8269d7403122bcee3fabe31bea8d6d147a3e7be2f253ef6d2b8a96')
+vk_session = vk_api.VkApi(token='ourtoken')
 vk = vk_session.get_api() 
 for event in VkLongPoll(vk_session).listen(): 
     if event.type == VkEventType.MESSAGE_NEW and event.to_me and event.text: 

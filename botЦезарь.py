@@ -25,59 +25,59 @@ for event in VkLongPoll(vk_session).listen():
             if s[:8] == 'Зашифруй': 
                 n = s[9]
                 try:
-                    x=int(n)
+                    x = int(n)
                 except:
                     vk.messages.send( 
-                user_id=event.user_id,
-                random_id=random.randint(1,2**32),
-                message='Неправильный формат ввода' 
+                user_id = event.user_id,
+                random_id = random.randint(1,2**32),
+                message = 'Неправильный формат ввода' 
                     )
                     continue
-                i=10
+                i = 10
                 while True:
                     try:
-                        e=int(s[i])
-                        n+=s[i]
+                        e = int(s[i])
+                        n += s[i]
                     except:
                         break
                     i+=1
-                n=int(n)
+                n = int(n)
                 c = s[i+1:] 
-                nc=encryption(c,n)
+                nc = encryption(c,n)
                 vk.messages.send( 
-                user_id=event.user_id,
-                random_id=random.randint(1,2**32),
-                message=nc 
+                user_id = event.user_id,
+                random_id = random.randint(1,2**32),
+                message = nc 
                     )
 
             elif s[:9] == 'Расшифруй':
                 n = s[10]
-                i=11
+                i = 11
                 try:
-                    x=int(n)
+                    x = int(n)
                 except:
                     vk.messages.send( 
-                user_id=event.user_id,
-                random_id=random.randint(1,2**32),
-                message='Неправильный формат ввода' 
+                user_id = event.user_id,
+                random_id = random.randint(1,2**32),
+                message = 'Неправильный формат ввода' 
                     )
                     continue
                 while True:
                     try:
-                        e=int(s[i])
-                        n+=s[i]
+                        e = int(s[i])
+                        n += s[i]
                     except:
                         break
-                    i+=1
-                n=int(n)
+                    i += 1
+                n = int(n)
                 c = s[i+1:] 
-                nc=decryption(c,n)
+                nc = decryption(c,n)
                 vk.messages.send( 
-                user_id=event.user_id,
-                random_id=random.randint(1,2**32),
-                message=nc 
+                user_id = event.user_id,
+                random_id = random.randint(1,2**32),
+                message = nc 
                 )
             else:
                 vk.messages.send(user_id=event.user_id,
-                random_id=random.randint(1,2**32),
-                message='Напиши мне:'+'\n'+'-Зашифруй [число] [слово] (бот выдаст тебе это же слово, но зашифрованное шифром Цезаря)'+'\n'+'-Расшифруй [число] [слово, зашифрованное шифром Цезаря] (бот выдаст тебе тоже слово, но расшифрованное)'+'\n'+'Шифр Цезаря - это обычное шифрование сдвигом'+'\n'+'Например, если ты напишешь: Зашифруй 1 мама'+'\n'+'Бот ответит: амам')
+                random_id = random.randint(1,2**32),
+                message = 'Напиши мне:'+'\n'+'-Зашифруй [число] [слово] (бот выдаст тебе это же слово, но зашифрованное шифром Цезаря)'+'\n'+'-Расшифруй [число] [слово, зашифрованное шифром Цезаря] (бот выдаст тебе тоже слово, но расшифрованное)'+'\n'+'Шифр Цезаря - это обычное шифрование сдвигом'+'\n'+'Например, если ты напишешь: Зашифруй 1 мама'+'\n'+'Бот ответит: амам')

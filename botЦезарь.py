@@ -14,7 +14,6 @@ def decryption(text,key):
         n_i = (abc.index(text[i])-key)%33
         new_text += abc[n_i]
     return new_text
-print(encryption('вова',1))
 from vk_api.longpoll import VkLongPoll, VkEventType 
 vk_session = vk_api.VkApi(token='ourtoken')
 vk = vk_session.get_api() 
